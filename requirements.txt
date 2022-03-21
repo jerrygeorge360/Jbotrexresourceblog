@@ -85,7 +85,6 @@ PyMsgBox==1.0.9
 pyparsing==3.0.4
 PyPDF2==1.26.0
 pyperclip==1.8.2
-pypiwin32==223
 PyQt5==5.15.4
 pyqt5-plugins==5.15.4.2.2
 PyQt5-Qt5==5.15.2
