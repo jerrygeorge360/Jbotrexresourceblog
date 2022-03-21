@@ -1,7 +1,7 @@
 <div class=""> {#general row for my main#}
 
-    <div class="row p-5">{#row for my special#}
-        <div class="col-lg-12  d-flex justify-content-center align-items-center flex-wrap  h-100">
+    <div class="row p-5 hide">{#row for my special#}
+        <div class="col-lg-12  d-flex justify-content-center align-items-center flex-wrap  h-100 hide">
             {% for i in range(my_database_query.filter_special_size) %}
                 <div class="col-lg-3 ">
                     <div class="mysectionboxes myoverlay ">
@@ -26,7 +26,8 @@
     </div>
 </div>
 
-<div id="whizcom" class="row  mt-lg-5" style="background-color: white">{#  row for my newsletter subscription#}
+<div id="whizcom" class="row  mt-lg-5 removespacesub" style="background-color: white">
+    {#  row for my newsletter subscription#}
     <div class="col-lg-12 d-flex mobile " id="whiz">
         <div id="" class=" col-lg-6 ml-lg-5 p-5  beans">
             <h2 style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">Become a Python Whiz</h2><br>
