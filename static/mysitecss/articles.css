@@ -1,0 +1,23 @@
+.containerarticle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 800px;
+    padding: 25px;
+
+}
+
+.article {
+    width: 70%;
+    padding: 5px;
+    background-color: red;
+    align-self: start;
+}
+
+.aside {
+    width: 20%;
+    padding: 5px;
+    background-color: orange;
+    align-self: start;
+
+}

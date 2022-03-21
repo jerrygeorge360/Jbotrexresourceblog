@@ -1,0 +1,7 @@
+.article_filter_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 800px;
+    padding: 25px;
+}

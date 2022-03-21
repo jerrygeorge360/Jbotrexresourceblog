@@ -1,0 +1,198 @@
+
+.mysectionboxes {
+    width: 100%;
+    height: 300px;
+    align-self: center;
+
+}
+
+.myoverlay {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    color: white;
+    width: 100%;
+    background-size: cover;
+
+
+}
+
+.mycaptionholder {
+    margin: auto;
+    width: 80%;
+
+}
+
+.removedecorations {
+    color: black;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif;
+
+}
+
+
+.mysectionboxesp {
+    position: relative;
+    /*width: 30%;*/
+    height: 100%;
+    /*margin-top: 5%;*/
+    box-shadow: 1px 1px 4px 1px slategrey;
+}
+
+.mysectionboxespp {
+    position: relative;
+    /*width: 30%;*/
+    height: 100%;
+    /*margin-top: 5%;*/
+    box-shadow: 1px 1px 4px 1px slategrey;
+
+}
+
+.mysectionboxesp:hover {
+
+    box-shadow: 4px 5px 14px 5px slategray;
+}
+
+.myoverlayholderp {
+    width: 100%;
+    height: 30%;
+    text-align: right;
+
+}
+
+.myoverlayholderp:hover {
+    opacity: .7;
+}
+
+.myoverlayp {
+    width: 100%;
+    background-size: cover;
+
+
+}
+
+.myoverlaytag {
+    border-radius: 10%;
+    /*background-color: red;*/
+    background-color: #757575;
+    color: white;
+    padding: 3px;
+    font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif;
+}
+
+.myoverlaytextp {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 3;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60%;
+    word-wrap: break-word;
+    background-color: white;
+}
+
+.myoverlaytextpp {
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 3;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 60%;
+    word-wrap: break-word;
+    background-color: transparent;
+}
+
+.myoverlaydate {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 10%;
+    background-color: #0B4F6C;
+    color: white;
+}
+
+.categorytitle {
+    padding: 20px;
+    font-size: 14px;
+    color: grey;
+    font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif;
+}
+
+.exploreboxes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background-color: #c3ffc8;
+    overflow: hidden;
+}
+
+.exploreoverlay, .exploreoverlay1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /*background-image: url("../assests/istock.jpg");*/
+    transition: 2s ease-in-out;
+    background-size: cover;;
+
+}
+
+.exploreboxes:hover > .exploreoverlay {
+
+    /*animation: 1s ultimate1 alternate;*/
+    transform: scale(1.5, 1.5);
+
+
+}
+
+.exploreoverlaytext {
+    height: 50%;
+    justify-content: center;
+    text-align: center;
+    width: 45%;
+
+}
+
+.exploreoverlaytext > div {
+    color: white;
+    margin-bottom: 12px;
+    text-align: center;
+    width: 100%;
+    font-size: 45px;
+
+}
+
+.exploreoverlaytext > button {
+    margin-top: 20px;
+    width: 85%;
+    background-color: greenyellow;
+    color: white;
+    padding: 12px;
+}
+
+.exploreboxes:hover .exploreoverlaytext {
+    /*animation: 1s ultimate alternate-reverse  ;*/
+    transform: scale(0.3, 0.3);
+
+}
+
+@keyframes ultimate {
+    50% {
+        transform: scale(0.3, 0.3);
+    }
+}
+
+@keyframes ultimate1 {
+    50% {
+        transform: scale(1.5, 1.5);
+    }
+}
+

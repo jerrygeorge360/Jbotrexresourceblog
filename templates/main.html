@@ -1,0 +1,250 @@
+<div class=""> {#general row for my main#}
+
+    <div class="row p-5">{#row for my special#}
+        <div class="col-lg-12  d-flex justify-content-center align-items-center flex-wrap  h-100">
+            {% for i in range(my_database_query.filter_special_size) %}
+                <div class="col-lg-3 ">
+                    <div class="mysectionboxes myoverlay ">
+                        <div class="mycaptionholder">
+                            <h2>
+                                <a href="/articles/{{ my_filter_special()[i].topic }}"
+                                   class="removedecorations"> {{ my_filter_special()[i].topic }}</a>
+                            </h2>
+                            <br>
+                            {#    <caption>{{ my_database_query.category[i].name }}</caption>#}
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    var myoverlay = document.querySelectorAll(".myoverlay");
+                    var single3 = myoverlay[{{ i }}].style.backgroundImage = "url('{{ url_for('post_download_file',number=my_filter_special()[i].id) }}')";
+                    var singleSize3 = myoverlay[{{ i }}].style.backgroundSize = 'cover';
+                </script>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+
+<div id="whizcom" class="row  mt-lg-5" style="background-color: white">{#  row for my newsletter subscription#}
+    <div class="col-lg-12 d-flex mobile " id="whiz">
+        <div id="" class=" col-lg-6 ml-lg-5 p-5  beans">
+            <h2 style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">Become a Python Whiz</h2><br>
+            <small style="font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif">Subscribe to my
+                newsletter</small>
+        </div>
+        <div class=" col-lg-5  d-flex align-items-center justify-content-center mobile ">
+            <form class="form-inline ">
+                <div class="form-group fillme">
+                    <label for=""></label>
+                    <input type="text" name="" id="" class="form-control p-4 bluesapphireoutline   "
+                           placeholder="Email here"
+                           aria-describedby="helpId">
+
+                </div>
+            </form>
+            <input name="" id="" class="btn btn-primary bluesapphire p-2 ml-3 fillme"
+                   style="font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif" type="button" value="Subscribe">
+
+        </div>
+    </div>
+
+
+</div>
+
+<div class="row mt-5 mt-5">{# row for my posts#}
+    <div class="col-lg-12 d-flex flex-wrap pt-5  " style="">
+        <div class="col-lg-8 d-flex justify-content-center mb-3 mobile tabletdisplay"><h2
+                style="font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif">Recent Posts</h2></div>
+
+        <div class="col-lg-4 d-flex justify-content-center mb-3 mobile">
+            <form class="form-inline">
+                <div class="form-group fillme">
+                    <label for=""></label>
+                    <input type="text" name="" id="" class="form-control " placeholder="" aria-describedby="helpId">
+                    <input name="" id=""
+                           style="margin-top:4px; font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif"
+                           class="btn btn-primary bluesapphire fillme" type="button" value="search">
+                </div>
+            </form>
+
+        </div>
+
+        <div class="col-lg-8  d-flex flex-wrap mobile changeHeight  " style="height: 2500px">
+
+            {% for i in range(my_database_query.posts_size) %}
+
+                <div class="col-lg-4 mb-lg-5 fillme ">
+                    <div class="mysectionboxesp moboverlay fillme ">
+                        <div class="myoverlayholderp myoverlayp"><span
+                                class="myoverlaytag">{{ my_database_query.posts[i].catalog.name }}</span></div>
+                        <div class="myoverlaytextp">
+                            <h2 style="color:#01BAEF "><a href=""
+                                                          class="removedecorations">{{ my_database_query.posts[i].topic |safe }}</a>
+                            </h2><br>
+                            <p style="height:50%;overflow:hidden;font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif"> {{ my_database_query.posts[i].description |safe }}
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad, beatae facere
+                                fugit hic laborum maxime necessitatibus, nihil non officia quaerat quos repudiandae
+                                totam voluptas voluptatibus? Amet laudantium optio possimus quisquam rem. Ad amet
+                                doloribus ducimus est et optio, quis quisquam reiciendis tempora vitae? A accusamus
+                                assumenda autem cum doloremque eaque enim eos et harum id, inventore ipsa iste itaque
+                                neque nobis nostrum obcaecati, officiis quasi qui quibusdam repellat repudiandae rerum
+                                soluta ut veniam vero voluptatem voluptatibus! Dolorum officia placeat provident
+                                temporibus! Animi assumenda atque deserunt et ipsam ipsum officia omnis sint veniam.
+                                Aliquam aperiam architecto aut commodi, delectus distinctio dolores eligendi est
+                                expedita fuga harum impedit necessitatibus odit officia optio possimus quae repellat
+                                reprehenderit sequi sint soluta tenetur ullam?</p>
+                            <a name="" id="" class="btn btn-primary"
+                               href="/articles/{{ my_database_query.posts[i].topic }}" role="button"><b>READ
+                                MORE</b></a>
+                        </div>
+                        <div class="myoverlaydate"><p
+                                style="font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif">{{ my_database_query.posts[i].date.ctime() }}</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="space"></div>
+
+
+
+                <script>
+                    var myoverlayp = document.querySelectorAll(".myoverlayp");
+                    var single3 = myoverlayp[{{ i }}].style.backgroundImage = "url('{{ url_for('post_download_file',number=my_database_query.posts[i].id) }}')";
+                    var singleSize3 = myoverlayp[{{ i }}].style.backgroundSize = 'cover';
+                </script>
+
+            {% endfor %}
+
+        </div>
+
+
+        <div class="col-lg-4  d-flex flex-column hide" style="height: 1900px">
+            <div class="row d-flex " style="height: 35%;width: 100%;">
+
+                <div class="col-lg-12 d-flex justify-content-center align-items-center tabletPadding">
+                    <div class="imagecontainerclass  " style="width: 300px;height: 300px">
+                        <img src="../static/assests/mypic.jpg" height="100%" width="100%" alt="">
+                    </div>
+                </div>
+
+                <div class="col-lg-12  text-center" style="font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif">
+                    <h5>Jerry George</h5>
+                    <h6>PROGRAMMER</h6>
+                    <p>Hi, I’m Jerry! I’m a software developer, a mechanical engineer(still in school) and a blogger
+                        from Nigeria. My goal is to make coding and tech easier for you.</p>
+                    <small>connectjerry@gmail.com</small>
+                    <hr>
+                    <p>Explore categories</p>
+                </div>
+            </div>
+
+            <div class="row d-flex hide " style="height: 65%;width: 100%; ">
+
+
+                {% for i in range(my_database_query.category_size) %}
+
+                    <div class="col-lg-12">
+
+
+                        <div class="exploreboxes">
+                            <div class="exploreoverlay" id="hh">
+                                <div class="exploreoverlaytext"
+                                     style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
+                                    <h3 class="text-white">{{ my_database_query.category[i].name }}</h3>
+                                    <a name="" id="" class="btn btn-primary bluesapphire"
+                                       href="/filter_articles/{{ my_database_query.category[i].name }}" role="button">
+                                        click here</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <script>
+                        var exploreoverlay = document.querySelectorAll(".exploreoverlay");
+                        var single3 = exploreoverlay[{{ i }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=my_database_query.category[i].id) }}')";
+                        var singleSize3 = exploreoverlay[{{ i }}].style.backgroundSize = 'cover';
+                    </script>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class=" d-flex justify-content-center align-items-center  show "
+     style="width: 100%;height: 400px ;text-align: center">
+    <p>Explore categories</p>
+    <hr>
+    <div id="carousel-demo " class="carousel slide " data-ride="carousel">
+        <!-- Carousel Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-demo" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-demo" data-slide-to="1"></li>
+            <li data-target="#carousel-demo" data-slide-to="2"></li>
+        </ol>
+
+
+        {% for i in range(my_database_query.category_size) %}
+            {% if i==1 %}
+                <div class="carousel-item active ">
+                    <div class="" style="height: 250px;">
+                        <div class="exploreboxes">
+                            <div class="exploreoverlay1" id="hh">
+                                <div class="exploreoverlaytext"
+                                     style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
+                                    <h3 class="text-white">{{ my_database_query.category[1].name }}</h3>
+                                    <a name="" id="" class="btn btn-primary bluesapphire"
+                                       href="/filter_articles/{{ my_database_query.category[1].name }}" role="button">
+                                        click here</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        var exploreoverlay = document.querySelectorAll(".exploreoverlay1");
+                        var single3 = exploreoverlay[{{ 1 }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=my_database_query.category[1].id) }}')";
+                        var singleSize3 = exploreoverlay[{{ 1 }}].style.backgroundSize = 'cover';
+                    </script>
+                </div>
+            {% else %}
+                <div class="carousel-item ">
+                    <div class="" style="height: 250px;">
+                        <div class="exploreboxes">
+                            <div class="exploreoverlay1" id="hh">
+                                <div class="exploreoverlaytext"
+                                     style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
+                                    <h3 class="text-white">{{ my_database_query.category[i].name }}</h3>
+                                    <a name="" id="" class="btn btn-primary bluesapphire"
+                                       href="/filter_articles/{{ my_database_query.category[i].name }}" role="button">
+                                        click here</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <script>
+                            var exploreoverlay = document.querySelectorAll(".exploreoverlay1");
+                            var single3 = exploreoverlay[{{ i }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=my_database_query.category[i].id) }}')";
+                            var singleSize3 = exploreoverlay[{{ i }}].style.backgroundSize = 'cover';
+                        </script>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        <a href="#carousel-demo" class="carousel-control-prev" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a href="#carousel-demo" class="carousel-control-next" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+
+<a name="" id="" class="btn btn-primary showauthor" href="/mobileauthor" role="button">About Author</a>
+
+
+
+
+

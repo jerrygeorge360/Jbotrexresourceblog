@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Upload page</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../static/uploadingpost/plugin/bootstrap-4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/uploadingpost/upload.css">
+    {% include 'texteditorheader.html' %}
+</head>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12">
+            <nav class="navbar navbar-expand-sm navbar-light " style='background:silver'>
+                <a class="navbar-brand" href="#"
+                   style="color: blue;font-family: cursive;font-weight: bolder;">jbotrex</a>
+                <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                        data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavId">
+                    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-toggle="dropdown"
+                               aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                            <div class="dropdown-menu" aria-labelledby="dropdownId">
+                                <a class="dropdown-item" href="#">Action 1</a>
+                                <a class="dropdown-item" href="#">Action 2</a>
+                            </div>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+
+                    </form>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-sm-5">
+
+            <form action="/postuploads" method="post" enctype="multipart/form-data" id="lemme">
+                <div class="form-group">
+                    <label for="file" class='filelabel'><img src="/static/uploadingpost/images/upload.png" alt=""
+                                                             srcset=""> </label>
+
+
+                    <input type="file" class="form-control-file" style="display: none;" name="file" id="file"
+                           placeholder="" aria-describedby="fileHelpId">
+                    <small id="fileHelpId" class="form-text text-muted">upload your overlay</small>
+                    <input type="hidden" name="img_url" id="img_url" value="">
+                    <input type="hidden" name="post_url" id="post_url">
+                </div>
+
+
+        </div>
+
+        <div class="col-sm-7">
+
+
+            <div class="form-group">
+                <label for=""></label>
+                <select name="category" id="category" aria-describedby="category"
+                        style="padding: 8px;width: 100%;border: 1px #C0C0C0 solid;outline:none">
+                    {% for i in category %}
+                        <option value="{{ i[0] }}">{{ i[0] }}</option>
+                    {% endfor %}
+                    {#                          {% for i in range(6) %}#}
+                    {#                          <option>{{ i }}</option>#}
+                    {#                          {% endfor %}#}
+                </select>
+                <small id="helpId" class="text-muted">select category</small>
+            </div>
+
+            <div class="form-group">
+                <label for=""></label>
+                <input type="text" name="topic" id="topic" class="form-control" placeholder="Topic"
+                       aria-describedby="helpId">
+                <small id="helpId" class="text-muted">Help text</small>
+            </div>
+            <div class="form-group">
+                <label for=""></label>
+                <input type="text" name="description" id="description" class="form-control" placeholder="Overview"
+                       aria-describedby="helpId">
+                <small id="helpId" class="text-muted">Help text</small>
+            </div>
+            <div class="form-group">
+                <label for=""></label>
+                <input type="text" name="author" id="song" value="{{ session.username }}" class="form-control "
+                       placeholder={{ session.username }} aria-describedby="helpId" contenteditable="false">
+                <small id="helpId" class="text-muted">Help text</small>
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+    {% include 'texteditor.html' %}
+    <div style="width: 100%">
+        <button type="submit" id="btnSavePost" class="btn btn-primary"
+                style="width: 100%;padding: 12px;margin-top: 40px">Submit
+        </button>
+    </div>
+
+
+    </form>
+    <br><br><br><br><br> <br><br><br><br><br>
+    <div class="col-sm-12">
+        <div class="foot">jbotrex</div>
+
+    </div>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.aboutcontainer {
+    background-color: #462118;
+    margin-top: -12px;
+    padding: 100px;
+}

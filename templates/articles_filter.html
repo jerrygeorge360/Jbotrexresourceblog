@@ -1,0 +1,156 @@
+{% include 'header.html' %}
+
+<div class="row mt-5 mt-5">{# row for my posts #}
+    <div class="col-lg-12 d-flex flex-wrap " style="">
+        <div class="col-lg-8   d-flex flex-wrap mobile changeHeight1 " style="height: 900px">
+
+
+            {% for i in range( number_of_articles ) %}
+
+                <div class="col-lg-4 fillme ">
+                    <div class="mysectionboxespp moboverlay fillme">
+                        <div class="myoverlayholderp myoverlayp"><span
+                                class="myoverlaytag">{{ my_article_instance[i].catalog.name }}</span></div>
+                        <div class="myoverlaytextpp">
+                            <h2><a href="" class="removedecorations">{{ my_article_instance[i].topic |safe }}</a></h2>
+                            <br>
+                            <p style=" height:50%;overflow:hidden;font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif;"> {{ my_article_instance[i].description |safe }}</p>
+                            <a name="" id="" class="btn btn-primary" href="/articles/{{ my_article_instance[i].topic }}"
+                               role="button"><b>READ MORE</b></a>
+                        </div>
+                        <div class="myoverlaydate">{{ my_article_instance[i].date.ctime() }}</div>
+                    </div>
+
+                </div>
+                <div class="space"></div>
+
+                <script>
+                    var myoverlayp = document.querySelectorAll(".myoverlayp");
+                    var single3 = myoverlayp[{{ i }}].style.backgroundImage = "url('{{ url_for('post_download_file',number=my_database_query.posts[i].id) }}')";
+                    var singleSize3 = myoverlayp[{{ i }}].style.backgroundSize = 'cover';
+                </script>
+
+            {% endfor %}
+
+        </div>
+        <div class="col-lg-4 d-flex flex-column hide" style="height: 1900px">
+            <div class="row d-flex" style="height: 35%;width: 100%;">
+                <div class="col-lg-12 d-flex justify-content-center align-items-center">
+                    <div class="imagecontainerclass  " style="width: 300px;height: 300px">
+                        <img src="../static/assests/mypic.jpg" height="100%" width="100%" alt="">
+                    </div>
+
+                </div>
+                <div class="col-lg-12  text-center" style="font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif">
+                    <h5>Jerry George</h5>
+                    <h6>PROGRAMMER</h6>
+                    <p>Hi, I’m Artturi! I’m an entrepreneur and a blogger from Finland. My goal is to make coding and
+                        tech easier for you.</p>
+                    <small>artturi@codingem.com</small>
+                    <hr>
+                    <p>Explore categories</p>
+                </div>
+            </div>
+            <div class="row d-flex hide" style="height: 65%;width: 100%;">
+
+
+                {% for i in range(my_database_query.category_size) %}
+
+                    <div class="col-lg-12">
+
+
+                        <div class="exploreboxes">
+                            <div class="exploreoverlay" id="hh">
+                                <div class="exploreoverlaytext"
+                                     style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
+                                    <h3 class="text-white">{{ my_database_query.category[i].name }}</h3>
+                                    <a name="" id="" class="btn btn-success bluesapphire"
+                                       href="/filter_articles/{{ my_database_query.category[i].name }}" role="button">
+                                        click here</a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <script>
+                        var exploreoverlay = document.querySelectorAll(".exploreoverlay");
+                        var single3 = exploreoverlay[{{ i }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=my_database_query.category[i].id) }}')";
+                        var singleSize3 = exploreoverlay[{{ i }}].style.backgroundSize = 'cover';
+                    </script>
+                {% endfor %}
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class=" d-flex justify-content-center align-items-center  show " style="width: 100% ;text-align: center">
+    <p>Explore categories</p>
+    <hr>
+    <div id="carousel-demo " class="carousel slide " data-ride="carousel">
+        <!-- Carousel Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-demo" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-demo" data-slide-to="1"></li>
+            <li data-target="#carousel-demo" data-slide-to="2"></li>
+        </ol>
+
+
+        {% for i in range(my_database_query.category_size) %}
+            {% if i==1 %}
+                <div class="carousel-item active ">
+                    <div class="" style="height: 250px;">
+                        <div class="exploreboxes">
+                            <div class="exploreoverlay1" id="hh">
+                                <div class="exploreoverlaytext"
+                                     style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
+                                    <h3 class="text-white">{{ my_database_query.category[1].name }}</h3>
+                                    <a name="" id="" class="btn btn-primary bluesapphire"
+                                       href="/filter_articles/{{ my_database_query.category[1].name }}" role="button">
+                                        click here</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        var exploreoverlay = document.querySelectorAll(".exploreoverlay1");
+                        var single3 = exploreoverlay[{{ 1 }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=my_database_query.category[1].id) }}')";
+                        var singleSize3 = exploreoverlay[{{ 1 }}].style.backgroundSize = 'cover';
+                    </script>
+                </div>
+            {% else %}
+                <div class="carousel-item ">
+                    <div class="" style="height: 250px;">
+                        <div class="exploreboxes">
+                            <div class="exploreoverlay1" id="hh">
+                                <div class="exploreoverlaytext"
+                                     style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
+                                    <h3 class="text-white">{{ my_database_query.category[i].name }}</h3>
+                                    <a name="" id="" class="btn btn-primary bluesapphire"
+                                       href="/filter_articles/{{ my_database_query.category[i].name }}" role="button">
+                                        click here</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <script>
+                            var exploreoverlay = document.querySelectorAll(".exploreoverlay1");
+                            var single3 = exploreoverlay[{{ i }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=my_database_query.category[i].id) }}')";
+                            var singleSize3 = exploreoverlay[{{ i }}].style.backgroundSize = 'cover';
+                        </script>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        <a href="#carousel-demo" class="carousel-control-prev" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a href="#carousel-demo" class="carousel-control-next" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div>
+</div>
+
+
+{% include 'footer.html' %}

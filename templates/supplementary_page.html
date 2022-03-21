@@ -1,0 +1,10 @@
+{% include 'header.html' %}
+{% if name_of_title=='about' %}
+    {% include 'about.html' %}
+{% elif name_of_title=='sponsorship' %}
+    {% include 'sponsorship.html' %}
+{% elif name_of_title=='resources' %}
+    {% include 'resources.html' %}
+{% endif %}
+
+{% include 'footer.html' %}

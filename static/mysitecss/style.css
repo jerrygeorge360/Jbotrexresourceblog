@@ -1,0 +1,179 @@
+.defhide {
+    display: none;
+}
+
+.dukeblue {
+    background-color: #390099;
+}
+
+.jazzberryjam {
+    background-color: #9E0059;
+}
+
+.radicalred {
+    background-color: #ff0054;
+}
+
+.orangepantone {
+    background-color: #ff5400;
+}
+
+.amber {
+    background-color: #ffBD00;
+}
+
+.darkpastelgreen {
+    background-color: #20BF55;
+}
+
+.darkpastelgreentext {
+    color: #20BF55;
+}
+
+.bluesapphire {
+    background-color: #0B4F6C;
+}
+
+.bluesapphireoutline {
+    border: 2px solid #0B4F6C;
+}
+
+.cyanprocesstext {
+    color: #FBFBFF;
+}
+
+.cyanprocess {
+    background-color: #01BAEF;
+}
+
+.ghostwhite {
+    background-color: #FBFBFF;
+}
+
+.ghostwhitetext {
+    color: #FBFBFF;
+}
+
+.sonicsilver {
+    background-color: #757575;
+}
+
+.headerimagebackground {
+    background-image: url("../../static/assests/jj-ying-8bghKxNU1j0-unsplash.jpg");
+    background-size: cover;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/*body{*/
+/*    background-color: #F5F5F5;*/
+/*}*/
+
+/*header{*/
+/*    width: 100%;*/
+/*    height: 300px;*/
+/*    !*background-color: blue;*!*/
+/*}*/
+/*.bootheader{*/
+/*    height: 300px;*/
+/*}*/
+/*.headdiv{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items: center;*/
+/*    width: 100%;*/
+/*    height: 60%;*/
+/*    background-color: #165FF2;*/
+
+/*}*/
+.logo {
+    width: 20%;
+    height: 50%;
+}
+
+/*.logotext{*/
+/*    display: flex;*/
+/*    justify-content: center;*/
+/*    align-items:start ;*/
+/*    margin-top:-12px;*/
+/*    height:20%;*/
+/*    font-size: 19px;*/
+/*    color: white;*/
+/*    background-color: #165FF2*/
+/*}*/
+
+/*nav{*/
+/*    display: flex;*/
+/*    padding-left: 82px;*/
+/*    padding-right: 82px;*/
+/*    width: 100%;*/
+/*    height: 100%;*/
+/*    background-color: #0918DB;*/
+/*    justify-content: space-between;*/
+/*}*/
+/*.navleft,.navright{*/
+/*    display: flex;*/
+/*    background-color: transparent;*/
+/*    width: 40%;*/
+/*    color: white;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*}*/
+/*.navright{*/
+/*    width: 30%;*/
+/*}*/
+/*.navstyle{*/
+/*    padding: 24px;*/
+/*    margin: 12px;*/
+/*    font-size: 20px;*/
+/*    text-decoration: none;*/
+/*    color: white;*/
+/*    height: 100%;*/
+/*}*/
+/*.navstyle:hover{*/
+/*    border-bottom: darkred 2px solid;*/
+/*}*/
+/*.navstyle1{*/
+/*    padding: 24px;*/
+/*    margin: 12px;*/
+/*    font-size: 20px;*/
+/*    text-decoration: none;*/
+/*    color: white;*/
+/*    height: 100%;*/
+/*}*/
+/*.navstyle1:hover{*/
+/*    transform: scale(1.3,1.3);*/
+/*}*/
+
+
+/*
+footer{
+
+
+    display: flex;
+    width: 100%;
+    height: 150px;
+    background-color: #0918DB;
+
+
+    padding-left: 82px;
+    padding-right: 82px;
+    justify-content: space-between;
+    align-items: center;
+
+
+}*/
+/*.footnav{*/
+/*    display: flex;*/
+/*    padding-left: 82px;*/
+/*    padding-right: 82px;*/
+/*    width: 100%;*/
+/*    height: 30%;*/
+/*    background-color: #0918DB;*/
+/*    justify-content: space-between;*/
+/*}*/
+
