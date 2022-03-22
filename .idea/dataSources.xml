@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="myportfolio.db" uuid="087acd88-db21-4a1a-a0aa-ce0680f6272d">
+    <data-source source="LOCAL" name="myportfolio.db" uuid="5e477530-dc99-4a3d-bde7-968a428d73af">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\EDEANI JERRY GEORGE\OneDrive\Desktop\digital dreams\Jbotrexresourceblog\static\myportfolio.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\EDEANI JERRY GEORGE\OneDrive\Desktop\digital dreams\Jbotrexresourceblog\myportfolio.db</jdbc-url>
       <driver-properties>
         <property name="enable_load_extension" value="true" />
       </driver-properties>
