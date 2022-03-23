@@ -7,10 +7,16 @@ import os
 
 
 def filter_special(name_of_category='programming and tips'):
-    id_of_name_of_category = db.session.query(Category).filter_by(name=name_of_category).first().id
-    final = db.session.query(Posts).filter_by(category_id=id_of_name_of_category).order_by(
-        db.session.query(Posts.date)).all()
-    return final
+    try:
+        id_of_name_of_category = db.session.query(Category).filter_by(name=name_of_category).first().id
+        if id_of_name_of_category is not None:
+            final = db.session.query(Posts).filter_by(category_id=id_of_name_of_category).order_by(
+                db.session.query(Posts.date)).all()
+            return final
+        else:
+            return ''
+    except:
+        return ''
 
 
 app = Flask(__name__)
