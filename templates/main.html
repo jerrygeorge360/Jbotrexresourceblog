@@ -35,17 +35,18 @@
                 newsletter</small>
         </div>
         <div class=" col-lg-5  d-flex align-items-center justify-content-center mobile ">
-            <form class="form-inline ">
+            <form name="newsletter" class="form-inline " action="/subscribing_news_letter" method="post">
                 <div class="form-group fillme">
                     <label for=""></label>
-                    <input type="text" name="" id="" class="form-control p-4 bluesapphireoutline   "
+                    <input type="text" name="newsletteri" id="" class="form-control p-4 bluesapphireoutline   "
                            placeholder="Email here"
                            aria-describedby="helpId">
 
                 </div>
             </form>
-            <input name="" id="" class="btn btn-primary bluesapphire p-2 ml-3 fillme"
-                   style="font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif" type="button" value="Subscribe">
+            <input name="submit_newsletter" id="" class="btn btn-primary bluesapphire p-2 ml-3 fillme"
+                   style="font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif" type="submit" value="Subscribe">
+
 
         </div>
     </div>
@@ -59,13 +60,15 @@
                 style="font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif">Recent Posts</h2></div>
 
         <div class="col-lg-4 d-flex justify-content-center mb-3 mobile">
-            <form class="form-inline">
+            <form name='' class="form-inline" method="post" action="/search">
+                {#                {{ form.hidden_tag() }}#}
                 <div class="form-group fillme">
                     <label for=""></label>
-                    <input type="text" name="" id="" class="form-control " placeholder="" aria-describedby="helpId">
+                    <input type="text" name="search" id="" class="form-control " placeholder=""
+                           aria-describedby="helpId">
                     <input name="" id=""
                            style="margin-top:4px; font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif"
-                           class="btn btn-primary bluesapphire fillme" type="button" value="search">
+                           class="btn btn-primary bluesapphire fillme" type="submit" value="search">
                 </div>
             </form>
 
@@ -80,9 +83,9 @@
                         <div class="myoverlayholderp myoverlayp"><span
                                 class="myoverlaytag">{{ my_database_query.posts[i].catalog.name }}</span></div>
                         <div class="myoverlaytextp">
-                            <h2 style="color:#01BAEF "><a href=""
-                                                          class="removedecorations">{{ my_database_query.posts[i].topic |safe }}</a>
-                            </h2><br>
+                            <h3 style="color:# "><a href=""
+                                                    class="removedecorations bluesapphire mobremove">{{ my_database_query.posts[i].topic |safe }}</a>
+                            </h3><br>
                             <p style="height:50%;overflow:hidden;font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif"> {{ my_database_query.posts[i].description |safe }}
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad, beatae facere
                                 fugit hic laborum maxime necessitatibus, nihil non officia quaerat quos repudiandae

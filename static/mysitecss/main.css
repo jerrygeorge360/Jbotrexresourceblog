@@ -24,10 +24,15 @@
 }
 
 .removedecorations {
-    color: black;
+    color: white;
     text-transform: uppercase;
     text-decoration: none;
     font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif;
+    padding: 5px;
+    border: 1px solid black;
+    border-radius: 5%;
+
+
 
 }
 

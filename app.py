@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for, session, f
 from flask_sqlalchemy import SQLAlchemy
 from flask_session import Session
 from werkzeug.utils import secure_filename
+from flask_mail import Mail, Message
 import os
 
 
@@ -19,6 +20,16 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 app.secret_key = '08028301137'
+
+mail = Mail(app)
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'connectjerry2022@gmail.com'
+app.config['MAIL_PASSWORD'] = 'ilovechisom360'
+app.config['MAIL_USE_TLS'] = False
+app.config['MAIL_USE_SSL'] = True
+mail = Mail(app)
 
 db = SQLAlchemy(app)
 from organize import *
@@ -197,6 +208,49 @@ def category():
 @app.route('/mobileauthor')
 def author():
     return render_template('mobileauthor.html')
+
+
+@app.route('/subscribing_news_letter', methods=['GET', 'POST'])
+def receive_subs():
+    if request.method == 'POST':
+        email = request.form['newsletteri']
+        db.session.add(Newsletter(email_address=email))
+        db.session.commit()
+        print('done with subscriber')
+    return 'ok'
+
+
+@app.route('/newsmail', methods=['POST', 'GET'])
+def index():
+    if request.method == 'POST':
+        newslist = []
+        list_of_subscribers = db.session.query(Newsletter).all()
+
+        def convert_to_list():
+            for i in list_of_subscribers:
+                newslist.append(i)
+
+        convert_to_list()
+
+        message = request.form['message']
+        subject = request.form['subject']
+
+        my_email = 'connectjerry2022@gmail.com'
+
+        msg = Message(subject=subject, sender=my_email, recipients=newslist)
+        msg.body = message
+        mail.send(msg)
+        return "Sent"
+    return render_template('jerrysite/newsletter.html')
+
+
+@app.route('/search', methods=['POST'])
+def search():
+    posts = Posts.query
+    what_to_search = request.form['search']
+    filtered_posts = posts.filter(Posts.content.like('%' + what_to_search + '%'))
+    arrange_posts = filtered_posts.order_by(Posts.topic).all()
+    return render_template('searched.html', search=what_to_search, posts=arrange_posts)
 
 
 if __name__ == '__main__':

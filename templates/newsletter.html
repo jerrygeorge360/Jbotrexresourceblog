@@ -1,0 +1,15 @@
+{% include 'header.html' %}
+
+<form class="contact-form" action="/contact" method="post">
+    <div class="row">
+        <div class="col-md-6">
+            <input type="text" name="subject" value="" placeholder="Subject" class="form-control">
+        </div>
+        <div class="col-md-12">
+            <textarea name="message" placeholder="Message" class="form-control"></textarea>
+            <button type="submit" name="button" class="btn">Submit Message</button>
+        </div>
+    </div>
+</form>
+
+{% include 'footer.html' %}

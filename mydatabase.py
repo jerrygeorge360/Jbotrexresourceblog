@@ -40,6 +40,15 @@ class Author(db.Model):
         return f"{self.id, self.user_name, self.first_name, self.last_name, self.middle_name, self.email_address}"
 
 
+class Newsletter(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    email_address = db.Column(db.String, index=True, unique=True)
+    date = db.Column(db.DateTime, default=datetime.utcnow, index=True)
+
+    def __repr__(self):
+        return f"{self.email_address}"
+
+
 db.create_all()
 
 
