@@ -1,17 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+{% include 'header.html' %}
 <body>
-<h1>You searched for....</h1>
-<p>{{ search }}</p>
-{% for post in posts %}
-    {{ post.topic }}
-    {{ post.content }}
-{% endfor %}
+{% if post %}
+    <h1>You searches are in ...</h1>
 
+    <div class="list-group">
+        {% for post in posts %}
+            <a href="/articles/{{ post.topic }}"
+               class="list-group-item list-group-item-action">{{ post.topic|safe }}</a>
+        {% endfor %}
 
+    </div>
+{% else %}
+    <div class="error_page d-flex ">
+        <div class="container ">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="error-msg text-center">
+                        <h1 class="my-0">4<span style="color: red">0</span>4</h1>
+                        <h3>Page Not Found</h3>
+                        <p>Ooops! The page you are looking for couldn't be found.</p>
+                        <a href="/" style="color: red"><i class="fa fa-home"></i> Back To Homepage</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endif %}
 </body>
-</html>
+<br>
+
+<nav class="fixed-bottom ">
+    {% include 'footer.html' %}
+</nav>
