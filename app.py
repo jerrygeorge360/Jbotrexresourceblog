@@ -253,5 +253,48 @@ def search():
     return render_template('searched.html', search=what_to_search, posts=arrange_posts)
 
 
+@app.route('/deleteoperations', methods=['GET', 'POST'])
+def deleteoperations():
+    return render_template('deleteoperations.html')
+
+
+@app.route('/categorydeletion', methods=['POST'])
+def deletecategory():
+    name_of_category = request.form['categoryname']
+    category_to_be_deleted = Category.query.filter_by(name=name_of_category).first()
+    accompained_post = Posts.query.filter_by(category_id=category_to_be_deleted.id).all()
+    if category:
+        db.session.delete(category_to_be_deleted)
+        db.session.delete(accompained_post)
+        db.session.commit()
+        return 'successful'
+
+
+@app.route('/postdeletion', methods=['POST'])
+def deletepost():
+    name_of_post = request.form['postname']
+    post_to_be_deleted = Posts.query.filter_by(name=name_of_post).first()
+
+    if post_to_be_deleted:
+        db.session.delete(post_to_be_deleted)
+
+        db.session.commit()
+        return 'sucessful'
+    else:
+        print('does not exist')
+
+
+@app.route('/authordeletion', methods=['POST'])
+def deleteauthor():
+    name_of_author = request.form['authorname']
+    author_to_be_deleted = Author.query.filter_by(name=name_of_author).first()
+    if author_to_be_deleted:
+        db.session.delete(author_to_be_deleted)
+        db.session.commit()
+        return 'sucessful'
+    else:
+        print('does not exist')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
