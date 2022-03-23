@@ -194,15 +194,17 @@
         {% for i in range(my_database_query.category_size) %}
             {% if i==1 %}
                 <div class="carousel-item active ">
-                    <div class="" style="height: 250px;">
-                        <div class="exploreboxes">
-                            <div class="exploreoverlay1" id="hh">
-                                <div class="exploreoverlaytext"
-                                     style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
-                                    <h3 class="text-white">{{ my_database_query.category[1].name }}</h3>
-                                    <a name="" id="" class="btn btn-primary bluesapphire"
-                                       href="/filter_articles/{{ my_database_query.category[1].name }}" role="button">
-                                        click here</a>
+                    <div class="carousel-inner">
+                        <div class="" style="height: 250px;">
+                            <div class="exploreboxes">
+                                <div class="exploreoverlay1" id="hh">
+                                    <div class="exploreoverlaytext"
+                                         style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
+                                        <h3 class="text-white">{{ my_database_query.category[1].name }}</h3>
+                                        <a name="" id="" class="btn btn-primary bluesapphire"
+                                           href="/filter_articles/{{ my_database_query.category[1].name }}" role="button">
+                                            click here</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -212,18 +214,27 @@
                         var single3 = exploreoverlay[{{ 1 }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=my_database_query.category[1].id) }}')";
                         var singleSize3 = exploreoverlay[{{ 1 }}].style.backgroundSize = 'cover';
                     </script>
+                    <a href="#carousel-demo" class="carousel-control-prev" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a href="#carousel-demo" class="carousel-control-next" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
                 </div>
+
             {% else %}
                 <div class="carousel-item ">
-                    <div class="" style="height: 250px;">
-                        <div class="exploreboxes">
-                            <div class="exploreoverlay1" id="hh">
-                                <div class="exploreoverlaytext"
-                                     style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
-                                    <h3 class="text-white">{{ my_database_query.category[i].name }}</h3>
-                                    <a name="" id="" class="btn btn-primary bluesapphire"
-                                       href="/filter_articles/{{ my_database_query.category[i].name }}" role="button">
-                                        click here</a>
+                    <div class="carousel-inner">
+                        <div class="" style="height: 250px;">
+                            <div class="exploreboxes">
+                                <div class="exploreoverlay1" id="hh">
+                                    <div class="exploreoverlaytext"
+                                         style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
+                                        <h3 class="text-white">{{ my_database_query.category[i].name }}</h3>
+                                        <a name="" id="" class="btn btn-primary bluesapphire"
+                                           href="/filter_articles/{{ my_database_query.category[i].name }}" role="button">
+                                            click here</a>
+                                    </div>
                                 </div>
                             </div>
 
@@ -234,19 +245,54 @@
                             var singleSize3 = exploreoverlay[{{ i }}].style.backgroundSize = 'cover';
                         </script>
                     </div>
+                    <a href="#carousel-demo" class="carousel-control-prev" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a href="#carousel-demo" class="carousel-control-next" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
                 </div>
+
             {% endif %}
         {% endfor %}
-        <a href="#carousel-demo" class="carousel-control-prev" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a href="#carousel-demo" class="carousel-control-next" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
+        {#        <a href="#carousel-demo" class="carousel-control-prev" data-slide="prev">#}
+        {#            <span class="carousel-control-prev-icon"></span>#}
+        {#        </a>#}
+        {#        <a href="#carousel-demo" class="carousel-control-next" data-slide="next">#}
+        {#            <span class="carousel-control-next-icon"></span>#}
+        {#        </a>#}
     </div>
 </div>
 
 <a name="" id="" class="btn btn-primary showauthor" href="/mobileauthor" role="button">About Author</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
