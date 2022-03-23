@@ -43,23 +43,37 @@ from mydatabase import *
 
 app.jinja_env.globals.update(my_filter_special=filter_special)
 
+ROWS_PER_PAGE = 4
+
 
 @app.context_processor
 def universal():
     cat = db.session.query(Category.name).all()
+    page = request.args.get('page', 1, type=int)
     database_query = {
-        'posts': db.session.query(Posts).order_by(db.session.query(Posts.date)).all(),
+        'posts': Posts.query.paginate(page=page, per_page=6),
         'posts_size': len(db.session.query(Posts).order_by(db.session.query(Posts.date)).all()),
         'category': db.session.query(Category).all(),
         'category_size': len(db.session.query(Category).all()),
         'articles': db.session.query(Posts).filter_by(topic='anything'),
         'filter_special_size': len(filter_special())
     }
+
     return dict(navigation=navbar, socialicons=socialmedia, category=cat, my_database_query=database_query)
+
+
+# @app.route('/')
+# def hello_world():
+#     return render_template('run.html')
+
+ROWS_PER_PAGE = 1
 
 
 @app.route('/')
 def hello_world():
+    # Get the data from the database
+    # page = request.args.get('page', 1, type=int)
+    # colors = Color.query.paginate(page=page, per_page=ROWS_PER_PAGE)
     return render_template('run.html')
 
 
@@ -140,7 +154,7 @@ def postupload():
         return redirect('/signin')
 
     if request.method == "POST":
-        upload_folder = r"C:\Users\EDEANI JERRY GEORGE\OneDrive\Desktop\digital dreams\myportfolio\static\postimages"
+        upload_folder = r"C:\Users\EDEANI JERRY GEORGE\OneDrive\Desktop\digital dreams\Jbotrexresourceblog\static\postimages"
         app.config['upload_folder'] = upload_folder
         topic = request.form['topic']
         desc = request.form['description']
@@ -170,7 +184,7 @@ def categoryupload():
     #     return redirect('/signin')
 
     if request.method == "POST":
-        upload_folder = r'C:\Users\EDEANI JERRY GEORGE\OneDrive\Desktop\digital dreams\myportfolio\static\categoryimages'
+        upload_folder = r'C:\Users\EDEANI JERRY GEORGE\OneDrive\Desktop\digital dreams\Jbotrexresourceblog\static\categoryimages'
         app.config['upload_folder1'] = upload_folder
         category_name = request.form['categoryname']
         image = request.files['file']

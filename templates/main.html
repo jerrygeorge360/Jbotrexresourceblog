@@ -76,17 +76,18 @@
 
         <div class="col-lg-8  d-flex flex-wrap mobile changeHeight  " style="height: 2500px">
 
-            {% for i in range(my_database_query.posts_size) %}
+            {#            {% for i in range(my_database_query.posts_size) %}#}
+            {% for i in my_database_query['posts'].items %}
 
                 <div class="col-lg-4 mb-lg-5 fillme ">
                     <div class="mysectionboxesp moboverlay fillme ">
                         <div class="myoverlayholderp myoverlayp"><span
-                                class="myoverlaytag">{{ my_database_query.posts[i].catalog.name }}</span></div>
+                                class="myoverlaytag">{{ i.catalog.name }}</span></div>
                         <div class="myoverlaytextp">
                             <h3 style="color:# "><a href=""
-                                                    class="removedecorations bluesapphire mobremove">{{ my_database_query.posts[i].topic |safe }}</a>
+                                                    class="removedecorations bluesapphire mobremove">{{ i.topic |safe }}</a>
                             </h3><br>
-                            <p style="height:50%;overflow:hidden;font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif"> {{ my_database_query.posts[i].description |safe }}
+                            <p style="height:50%;overflow:hidden;font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif"> {{ i.description |safe }}
                                 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus ad, beatae facere
                                 fugit hic laborum maxime necessitatibus, nihil non officia quaerat quos repudiandae
                                 totam voluptas voluptatibus? Amet laudantium optio possimus quisquam rem. Ad amet
@@ -99,26 +100,65 @@
                                 expedita fuga harum impedit necessitatibus odit officia optio possimus quae repellat
                                 reprehenderit sequi sint soluta tenetur ullam?</p>
                             <a name="" id="" class="btn btn-primary"
-                               href="/articles/{{ my_database_query.posts[i].topic }}" role="button"><b>READ
+                               href="/articles/{{ i.topic }}" role="button"><b>READ
                                 MORE</b></a>
                         </div>
                         <div class="myoverlaydate"><p
-                                style="font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif">{{ my_database_query.posts[i].date.ctime() }}</p>
+                                style="font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif">{{ i.date.ctime() }}</p>
                         </div>
                     </div>
 
                 </div>
+
+
+
+
                 <div class="space"></div>
 
 
 
                 <script>
                     var myoverlayp = document.querySelectorAll(".myoverlayp");
-                    var single3 = myoverlayp[{{ i }}].style.backgroundImage = "url('{{ url_for('post_download_file',number=my_database_query.posts[i].id) }}')";
-                    var singleSize3 = myoverlayp[{{ i }}].style.backgroundSize = 'cover';
+                    var single3 = myoverlayp[{{ loop.index0 }}].style.backgroundImage = "url('{{ url_for('post_download_file',number=i.id) }}')";
+                    var singleSize3 = myoverlayp[{{ loop.index0 }}].style.backgroundSize = 'cover';
                 </script>
 
             {% endfor %}
+            <!-- Pagination Links-->
+            <div class="text-right">
+                <a href="{{ url_for('hello_world', page=my_database_query['posts'].prev_num) }}"
+                   class="btn btn-outline-dark
+       {% if my_database_query['posts'].page == 1 %}disabled{% endif %}">
+                    &laquo;
+                </a>
+                <!-- Loop through the number of pages to display a link for each-->
+                {% for page_num in my_database_query['posts'].iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+                    {% if page_num %}
+                        <!-- Check for the active page and set the link to "Active"-->
+                        {% if my_database_query['posts'].page == page_num %}
+                            <a href="{{ url_for('hello_world', page=page_num) }}"
+                               class="btn btn-dark">
+                                {{ page_num }}
+                            </a>
+                        {% else %}
+                            <a href="{{ url_for('hello_world', page=page_num) }}"
+                               class="btn btn-outline-dark">
+                                {{ page_num }}
+                            </a>
+                        {% endif %}
+                    {% else %}
+                        ...
+                    {% endif %}
+                {% endfor %}
+                <a href="{{ url_for('hello_world', page=my_database_query['posts'].next_num) }}"
+                   class="btn btn-outline-dark
+       {% if my_database_query['posts'].page == my_database_query['posts'].pages %}disabled{% endif %}">
+                    &raquo;
+                </a>
+            </div>
+            <p class="text-right mt-3">
+                Showing page {{ my_database_query['posts'].page }} of {{ my_database_query['posts'].pages }}
+            </p>
 
         </div>
 
@@ -265,6 +305,8 @@
 </div>
 
 <a name="" id="" class="btn btn-primary showauthor" href="/mobileauthor" role="button">About Author</a>
+
+
 
 
 
