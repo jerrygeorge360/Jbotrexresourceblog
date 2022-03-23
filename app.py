@@ -54,7 +54,6 @@ def universal():
         'posts': Posts.query.paginate(page=page, per_page=6),
         'posts_size': len(db.session.query(Posts).order_by(db.session.query(Posts.date)).all()),
         'category': db.session.query(Category).all(),
-        'category_size': len(db.session.query(Category).all()),
         'articles': db.session.query(Posts).filter_by(topic='anything'),
         'filter_special_size': len(filter_special())
     }
@@ -66,14 +65,11 @@ def universal():
 # def hello_world():
 #     return render_template('run.html')
 
-ROWS_PER_PAGE = 1
 
 
 @app.route('/')
 def hello_world():
-    # Get the data from the database
-    # page = request.args.get('page', 1, type=int)
-    # colors = Color.query.paginate(page=page, per_page=ROWS_PER_PAGE)
+
     return render_template('run.html')
 
 
@@ -87,11 +83,12 @@ def articles(name_of_article):
 @app.route('/filter_articles/<filtration>')
 def article_filter(filtration):
     name = filtration
+    page = request.args.get('page', 1, type=int)
     cart = db.session.query(Category).filter_by(name=name).first()
-    article_instance = db.session.query(Posts).filter_by(category_id=cart.id).all()
-    number_of_article = len(article_instance)
+    article_instance = Posts.query.filter_by(category_id=cart.id).paginate(page=page, per_page=6)
+
     return render_template('articles_filter.html', my_article_instance=article_instance,
-                           number_of_articles=number_of_article)
+                           )
 
 
 @app.route('/signup', methods=['GET', 'POST'])

@@ -186,7 +186,7 @@
             <div class="row d-flex hide " style="height: 65%;width: 100%; ">
 
 
-                {% for i in range(my_database_query.category_size) %}
+                {% for i in my_database_query['category'] %}
 
                     <div class="col-lg-12">
 
@@ -195,9 +195,9 @@
                             <div class="exploreoverlay" id="hh">
                                 <div class="exploreoverlaytext"
                                      style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
-                                    <h3 class="text-white">{{ my_database_query.category[i].name }}</h3>
+                                    <h3 class="text-white">{{ i.name }}</h3>
                                     <a name="" id="" class="btn btn-primary bluesapphire"
-                                       href="/filter_articles/{{ my_database_query.category[i].name }}" role="button">
+                                       href="/filter_articles/{{ i.name }}" role="button">
                                         click here</a>
                                 </div>
                             </div>
@@ -206,8 +206,8 @@
                     </div>
                     <script>
                         var exploreoverlay = document.querySelectorAll(".exploreoverlay");
-                        var single3 = exploreoverlay[{{ i }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=my_database_query.category[i].id) }}')";
-                        var singleSize3 = exploreoverlay[{{ i }}].style.backgroundSize = 'cover';
+                        var single3 = exploreoverlay[{{ loop.index0 }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=i.id) }}')";
+                        var singleSize3 = exploreoverlay[{{ loop.index0 }}].style.backgroundSize = 'cover';
                     </script>
                 {% endfor %}
 
@@ -231,8 +231,8 @@
         </ol>
 
 
-        {% for i in range(my_database_query.category_size) %}
-            {% if i==1 %}
+        {% for i in my_database_query['category'] %}
+            {% if loop.index0==0 %}
                 <div class="carousel-item active ">
                     <div class="carousel-inner">
                         <div class="" style="height: 250px;">
@@ -240,9 +240,9 @@
                                 <div class="exploreoverlay1" id="hh">
                                     <div class="exploreoverlaytext"
                                          style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
-                                        <h3 class="text-white">{{ my_database_query.category[1].name }}</h3>
+                                        <h3 class="text-white">{{ i.name }}</h3>
                                         <a name="" id="" class="btn btn-primary bluesapphire"
-                                           href="/filter_articles/{{ my_database_query.category[1].name }}" role="button">
+                                           href="/filter_articles/{{ i.name }}" role="button">
                                             click here</a>
                                     </div>
                                 </div>
@@ -251,8 +251,8 @@
                     </div>
                     <script>
                         var exploreoverlay = document.querySelectorAll(".exploreoverlay1");
-                        var single3 = exploreoverlay[{{ 1 }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=my_database_query.category[1].id) }}')";
-                        var singleSize3 = exploreoverlay[{{ 1 }}].style.backgroundSize = 'cover';
+                        var single3 = exploreoverlay[{{ loop.index0 }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=i.id) }}')";
+                        var singleSize3 = exploreoverlay[{{ loop.index0 }}].style.backgroundSize = 'cover';
                     </script>
                     <a href="#carousel-demo" class="carousel-control-prev" data-slide="prev">
                         <span class="carousel-control-prev-icon"></span>
@@ -270,9 +270,9 @@
                                 <div class="exploreoverlay1" id="hh">
                                     <div class="exploreoverlaytext"
                                          style="font-family: Tahoma, Verdana, Helvetica, Arial, sans-serif">
-                                        <h3 class="text-white">{{ my_database_query.category[i].name }}</h3>
+                                        <h3 class="text-white">{{ i.name }}</h3>
                                         <a name="" id="" class="btn btn-primary bluesapphire"
-                                           href="/filter_articles/{{ my_database_query.category[i].name }}" role="button">
+                                           href="/filter_articles/{{ i.name }}" role="button">
                                             click here</a>
                                     </div>
                                 </div>
@@ -281,8 +281,8 @@
                         </div>
                         <script>
                             var exploreoverlay = document.querySelectorAll(".exploreoverlay1");
-                            var single3 = exploreoverlay[{{ i }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=my_database_query.category[i].id) }}')";
-                            var singleSize3 = exploreoverlay[{{ i }}].style.backgroundSize = 'cover';
+                            var single3 = exploreoverlay[{{ loop.index0 }}].style.backgroundImage = "url('{{ url_for('category_download_file',number=i.id) }}')";
+                            var singleSize3 = exploreoverlay[{{ loop.index0 }}].style.backgroundSize = 'cover';
                         </script>
                     </div>
                     <a href="#carousel-demo" class="carousel-control-prev" data-slide="prev">
@@ -295,12 +295,6 @@
 
             {% endif %}
         {% endfor %}
-        {#        <a href="#carousel-demo" class="carousel-control-prev" data-slide="prev">#}
-        {#            <span class="carousel-control-prev-icon"></span>#}
-        {#        </a>#}
-        {#        <a href="#carousel-demo" class="carousel-control-next" data-slide="next">#}
-        {#            <span class="carousel-control-next-icon"></span>#}
-        {#        </a>#}
     </div>
 </div>
 
