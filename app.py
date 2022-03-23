@@ -265,7 +265,12 @@ def deletecategory():
     accompained_post = Posts.query.filter_by(category_id=category_to_be_deleted.id).all()
     if category:
         db.session.delete(category_to_be_deleted)
-        db.session.delete(accompained_post)
+
+        def delete_accomapained_post():
+            for i in accompained_post:
+                db.session.delete(i)
+
+        delete_accomapained_post()
         db.session.commit()
         return 'successful'
 
@@ -273,15 +278,13 @@ def deletecategory():
 @app.route('/postdeletion', methods=['POST'])
 def deletepost():
     name_of_post = request.form['postname']
-    post_to_be_deleted = Posts.query.filter_by(name=name_of_post).first()
+    post_to_be_deleted = Posts.query.filter_by(topic=name_of_post).first()
 
     if post_to_be_deleted:
         db.session.delete(post_to_be_deleted)
 
         db.session.commit()
         return 'sucessful'
-    else:
-        print('does not exist')
 
 
 @app.route('/authordeletion', methods=['POST'])
@@ -292,8 +295,6 @@ def deleteauthor():
         db.session.delete(author_to_be_deleted)
         db.session.commit()
         return 'sucessful'
-    else:
-        print('does not exist')
 
 
 if __name__ == '__main__':
