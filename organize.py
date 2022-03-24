@@ -3,7 +3,7 @@ navbar = [['HOME', '/'], ['ABOUT', '/supplementary_pages/about'], ['RESOURCES', 
           ['SPONSORSHIP', '/supplementary_pages/sponsorship']]
 
 socialmedia = [["twitter", "https://twitter.com"], ["linkedin", "https://linkedin.com"],
-               ["github", "https://github.com"], ["facebook", "https://facebook.com"],
+               ["github", "https://github.com"],
                ["youtube", "https://youtube.com"]]
 
 '''footer.html variables'''
