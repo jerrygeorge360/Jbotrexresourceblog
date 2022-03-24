@@ -151,7 +151,7 @@ def postupload():
         return redirect('/signin')
 
     if request.method == "POST":
-        upload_folder = r"C:\Users\EDEANI JERRY GEORGE\OneDrive\Desktop\digital dreams\Jbotrexresourceblog\static\postimages"
+        upload_folder = "static/postimages"
         app.config['upload_folder'] = upload_folder
         topic = request.form['topic']
         desc = request.form['description']
@@ -181,7 +181,7 @@ def categoryupload():
     #     return redirect('/signin')
 
     if request.method == "POST":
-        upload_folder = r'C:\Users\EDEANI JERRY GEORGE\OneDrive\Desktop\digital dreams\Jbotrexresourceblog\static\categoryimages'
+        upload_folder = 'static/categoryimages'
         app.config['upload_folder1'] = upload_folder
         category_name = request.form['categoryname']
         image = request.files['file']
