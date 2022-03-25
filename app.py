@@ -229,14 +229,14 @@ def author():
     return render_template('mobileauthor.html')
 
 
-@app.route('/subscribing_news_letter', methods=['GET', 'POST'])
+@app.route('/subscribing_news_letter', methods=['POST'])
 def receive_subs():
     if request.method == 'POST':
         email = request.form['newsletteri']
         db.session.add(Newsletter(email_address=email))
         db.session.commit()
         print('done with subscriber')
-    return 'ok'
+    return f'<alert>{email} has been added to the newsletter </alert>'
 
 
 @app.route('/newsmail', methods=['POST', 'GET'])
@@ -247,7 +247,7 @@ def index():
 
         def convert_to_list():
             for i in list_of_subscribers:
-                newslist.append(i)
+                newslist.append(str(i))
 
         convert_to_list()
 
@@ -259,8 +259,8 @@ def index():
         msg = Message(subject=subject, sender=my_email, recipients=newslist)
         msg.body = message
         mail.send(msg)
-        return "Sent"
-    return render_template('jerrysite/newsletter.html')
+        return "sent"
+    return render_template('newsletter.html')
 
 
 @app.route('/search', methods=['POST'])
