@@ -151,7 +151,8 @@ def postupload():
         return redirect('/signin')
 
     if request.method == "POST":
-        upload_folder = "static/postimages"
+        path = 'static'
+        upload_folder = os.path.join(path, 'postimages', '')
         app.config['upload_folder'] = upload_folder
         topic = request.form['topic']
         desc = request.form['description']
@@ -181,7 +182,8 @@ def categoryupload():
     #     return redirect('/signin')
 
     if request.method == "POST":
-        upload_folder = 'static/categoryimages'
+        path = 'static'
+        upload_folder = os.path.join(path, 'categoryimages')
         app.config['upload_folder1'] = upload_folder
         category_name = request.form['categoryname']
         image = request.files['file']
