@@ -1,3 +1,5 @@
+{% include 'myalerts.html' %}
+
 <div class=""> {#general row for my main#}
 
     <div class="row p-5 hide">{#row for my special#}
@@ -85,10 +87,10 @@
                         <div class="myoverlayholderp myoverlayp"><span
                                 class="myoverlaytag">{{ i.catalog.name }}</span></div>
                         <div class="myoverlaytextp">
-                            <h3 style="color:# "><a href=""
-                                                    class="removedecorations bluesapphire mobremove">{{ i.topic |safe }}</a>
+                            <h3 style="color:# "><span
+                                    class="removedecorations bluesapphire mobremove">{{ i.topic |safe }}</span>
                             </h3><br>
-                            <p style="height:50%;overflow:hidden;font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif"> {{ i.description |safe }}</p>
+                            <p style="height:30%;overflow:hidden;font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif"> {{ i.description |safe }}</p>
                             <a name="" id="" class="btn btn-primary"
                                href="/articles/{{ i.topic }}" role="button"><b>READ
                                 MORE</b></a>
@@ -167,7 +169,7 @@
                     <h6>PROGRAMMER</h6>
                     <p>Hi, I’m Jerry! I’m a software developer, a mechanical engineer(still in school) and a blogger
                         from Nigeria. My goal is to make coding and tech easier for you.</p>
-                    <small>connectjerry@gmail.com</small>
+                    <small>connectjerry2022@gmail.com</small>
                     <hr>
                     <p>Explore categories</p>
                 </div>

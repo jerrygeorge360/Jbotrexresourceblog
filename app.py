@@ -43,7 +43,6 @@ from mydatabase import *
 
 app.jinja_env.globals.update(my_filter_special=filter_special)
 
-ROWS_PER_PAGE = 4
 
 
 @app.context_processor
@@ -66,10 +65,8 @@ def universal():
 #     return render_template('run.html')
 
 
-
 @app.route('/')
 def hello_world():
-
     return render_template('run.html')
 
 
@@ -151,28 +148,32 @@ def postupload():
         return redirect('/signin')
 
     if request.method == "POST":
-        path = 'static'
-        upload_folder = os.path.join(path, 'postimages', '')
-        app.config['upload_folder'] = upload_folder
         topic = request.form['topic']
         desc = request.form['description']
-        content = request.get_data()
-        print(content)
-        postimage = request.files['file']
-        postimagename = secure_filename(postimage.filename)
-        catalog = request.form['category']
-        catalog1 = db.session.query(Category).filter_by(name=catalog).first()
-        creator = request.form['author']
-        content1 = request.form['post_url']
-        print(content1)
-        creator1 = db.session.query(Author).filter_by(user_name=creator).first()
-        postimage.save(os.path.join(app.config['upload_folder'], postimagename))
-        new_post = Posts(topic=topic, content=content1, image_name=postimagename, catalog=catalog1, creator=creator1
-                         , description=desc)
-        db.session.add(new_post)
-        db.session.commit()
-        return 'successful'
+        content = request.form['content']
+        if topic or desc or content != '':
+            path = 'static'
+            upload_folder = os.path.join(path, 'postimages', '')
+            app.config['upload_folder'] = upload_folder
 
+            print(content)
+            postimage = request.files['file']
+            postimagename = secure_filename(postimage.filename)
+            catalog = request.form['category']
+            catalog1 = db.session.query(Category).filter_by(name=catalog).first()
+            creator = request.form['author']
+            creator1 = db.session.query(Author).filter_by(user_name=creator).first()
+            postimage.save(os.path.join(app.config['upload_folder'], postimagename))
+            new_post = Posts(topic=topic, content=content, image_name=postimagename, catalog=catalog1, creator=creator1
+                             , description=desc)
+            db.session.add(new_post)
+            db.session.commit()
+            flash(f'Post was successfully added', 'success')
+            return redirect('/postuploads')
+        else:
+            error = 'Not successful'
+
+        return render_template('update.html', error=error)
     return render_template('update.html')
 
 
@@ -182,17 +183,24 @@ def categoryupload():
     #     return redirect('/signin')
 
     if request.method == "POST":
-        path = 'static'
-        upload_folder = os.path.join(path, 'categoryimages')
-        app.config['upload_folder1'] = upload_folder
         category_name = request.form['categoryname']
-        image = request.files['file']
-        imagename = secure_filename(image.filename)
-        image.save(os.path.join(app.config['upload_folder1'], imagename))
-        category = Category(name=category_name, image_name=imagename)
-        db.session.add(category)
-        db.session.commit()
+        if category_name != '':
+            path = 'static'
+            upload_folder = os.path.join(path, 'categoryimages')
+            app.config['upload_folder1'] = upload_folder
 
+            image = request.files['file']
+            imagename = secure_filename(image.filename)
+            image.save(os.path.join(app.config['upload_folder1'], imagename))
+            category = Category(name=category_name, image_name=imagename)
+            db.session.add(category)
+            db.session.commit()
+            flash(f'Category was successfully added', 'success')
+            return redirect('/categoryuploads')
+        else:
+            error = 'Not successful'
+
+        return render_template('catagory.html', error=error)
     return render_template('catagory.html')
 
 
@@ -229,14 +237,19 @@ def author():
     return render_template('mobileauthor.html')
 
 
-@app.route('/subscribing_news_letter', methods=['POST'])
+@app.route('/subscribing_news_letter', methods=['GET', 'POST'])
 def receive_subs():
     if request.method == 'POST':
         email = request.form['newsletteri']
-        db.session.add(Newsletter(email_address=email))
-        db.session.commit()
-        print('done with subscriber')
-    return f'<alert>{email} has been added to the newsletter </alert>'
+        if email != '':
+            db.session.add(Newsletter(email_address=email))
+            db.session.commit()
+            print('done with subscriber')
+            flash(f'{email} was successfully added', 'success')
+            return redirect('/')
+        else:
+            error = 'please add something'
+        return render_template('run.html', error=error)
 
 
 @app.route('/newsmail', methods=['POST', 'GET'])
@@ -251,7 +264,7 @@ def index():
 
         convert_to_list()
 
-        message = request.form['message']
+        message = request.form['content']
         subject = request.form['subject']
 
         my_email = 'connectjerry2022@gmail.com'

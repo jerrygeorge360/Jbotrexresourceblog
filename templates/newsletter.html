@@ -1,4 +1,6 @@
 {% include 'header.html' %}
+<script src="https://cdn.tiny.cloud/1/m2537qqzn2ope226226jnrtj7xxd3eguzewss1l2e59j42at/tinymce/5/tinymce.min.js"
+        referrerpolicy="origin"></script>
 
 <form class="contact-form" action="/newsmail" method="post">
     <div class="row">
@@ -6,7 +8,7 @@
             <input type="text" name="subject" value="" placeholder="Subject" class="form-control">
         </div>
         <div class="col-md-12">
-            <textarea name="message" placeholder="Message" class="form-control"></textarea>
+            {% include 'mytinyeditor.html' %}
             <button type="submit" name="button" class="btn">Submit Message</button>
         </div>
     </div>

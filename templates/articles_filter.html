@@ -13,9 +13,9 @@
                         <div class="myoverlayholderp myoverlayp"><span
                                 class="myoverlaytag">{{ i.catalog.name }}</span></div>
                         <div class="myoverlaytextpp">
-                            <h3><a href="" class="removedecorations bluesapphire mobremove">{{ i.topic |safe }}</a></h3>
+                            <h3><span class="removedecorations bluesapphire mobremove">{{ i.topic |safe }}</span></h3>
                             <br>
-                            <p style=" height:50%;overflow:hidden;font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif;"> {{ i.description |safe }}</p>
+                            <p style=" height:30%;overflow:hidden;font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif;"> {{ i.description |safe }}</p>
                             <a name="" id="" class="btn btn-primary" href="/articles/{{ i.topic }}"
                                role="button"><b>READ MORE</b></a>
                         </div>
@@ -45,9 +45,9 @@
                 <div class="col-lg-12  text-center" style="font-family:  Tahoma, Verdana, Helvetica, Arial, sans-serif">
                     <h5>Jerry George</h5>
                     <h6>PROGRAMMER</h6>
-                    <p>Hi, I’m Artturi! I’m an entrepreneur and a blogger from Finland. My goal is to make coding and
-                        tech easier for you.</p>
-                    <small>artturi@codingem.com</small>
+                    <p>Hi, I’m Jerry! I’m a software developer, a mechanical engineer(still in school) and a blogger
+                        from Nigeria. My goal is to make coding and tech easier for you.</p>
+                    <small>connectjerry2022@gmail.com</small>
                     <hr>
                     <p>Explore categories</p>
                 </div>
@@ -144,12 +144,12 @@
                 </div>
             {% endif %}
         {% endfor %}
-        <a href="#carousel-demo" class="carousel-control-prev" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </a>
-        <a href="#carousel-demo" class="carousel-control-next" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </a>
+        {#        <a href="#carousel-demo" class="carousel-control-prev" data-slide="prev">#}
+        {#            <span class="carousel-control-prev-icon"></span>#}
+        {#        </a>#}
+        {#        <a href="#carousel-demo" class="carousel-control-next" data-slide="next">#}
+        {#            <span class="carousel-control-next-icon"></span>#}
+        {#        </a>#}
     </div>
 </div>
 
