@@ -1,8 +1,9 @@
 {% extends 'masterarticle.html' %}
 {% block content %}
     <p style="background-color: black">
-        {{ my_article_instance.content|safe }}
-
+        {% autoescape false %}
+        {{ my_article_instance.content }}
+        {% endautoescape %}
     </p>
 {% endblock %}
 
